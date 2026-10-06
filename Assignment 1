@@ -1,0 +1,432 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": []
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "8hn6Ijk8PVG6",
+        "outputId": "bfccc14d-bd16-44ee-d2f4-f8a3eb872f29"
+      },
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter account balance: 5000\n",
+            "Enter withdrawal amount: 2000\n",
+            "Transaction successful. Remaining balance: ₹ 3000.0\n"
+          ]
+        }
+      ],
+      "source": [
+        "# 1. Simple ATM Calculator\n",
+        "balance = float(input(\"Enter account balance: \"))\n",
+        "withdrawal = float(input(\"Enter withdrawal amount: \"))\n",
+        "\n",
+        "if withdrawal <= balance:\n",
+        "    balance = balance - withdrawal\n",
+        "    print(\"Transaction successful. Remaining balance: ₹\", balance)\n",
+        "else:\n",
+        "    print(\"Insufficient balance.\")"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 2. Electricity Bill Generator\n",
+        "units = int(input(\"Enter units consumed: \"))\n",
+        "\n",
+        "if units <= 100:\n",
+        "    bill = units * 5\n",
+        "\n",
+        "elif units <= 200:\n",
+        "    bill = (100 * 5) + ((units - 100) * 7)\n",
+        "\n",
+        "else:\n",
+        "    bill = (100 * 5) + (100 * 7) + ((units - 200) * 10)\n",
+        "\n",
+        "print(\"Bill amount = ₹\", bill)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "U50yb_-rPiUD",
+        "outputId": "ac9ed55d-2cbc-4a38-a593-eef1f7785314"
+      },
+      "execution_count": 7,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter units consumed: 275\n",
+            "Bill amount = ₹ 1950\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 3. Temperature Converter\n",
+        "temp = float(input(\"Enter temperature: \"))\n",
+        "unit = input(\"Enter unit (C/F): \")\n",
+        "\n",
+        "if unit.upper() == \"C\":\n",
+        "    fahrenheit = (temp * 9/5) + 32\n",
+        "    print(\"Temperature in Fahrenheit:\", fahrenheit, \"°F\")\n",
+        "\n",
+        "elif unit.upper() == \"F\":\n",
+        "    celsius = (temp - 32) * 5/9\n",
+        "    print(\"Temperature in Celsius:\", celsius, \"°C\")\n",
+        "\n",
+        "else:\n",
+        "    print(\"Invalid unit.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "uhbyj_i_Pzb1",
+        "outputId": "c1de9750-22c7-4d04-9838-dc960903e03a"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter temperature: 35\n",
+            "Enter unit (C/F): C\n",
+            "Temperature in Fahrenheit: 95.0 °F\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 4. Mobile Recharge Validity\n",
+        "from datetime import datetime\n",
+        "\n",
+        "recharge_date = input(\"Enter recharge date (YYYY-MM-DD): \")\n",
+        "today = input(\"Enter today's date (YYYY-MM-DD): \")\n",
+        "\n",
+        "recharge_date = datetime.strptime(recharge_date, \"%Y-%m-%d\")\n",
+        "today = datetime.strptime(today, \"%Y-%m-%d\")\n",
+        "\n",
+        "days = (today - recharge_date).days\n",
+        "\n",
+        "if days < 28:\n",
+        "    print(\"Plan is still valid.\")\n",
+        "else:\n",
+        "    print(\"Plan expired. Recharge again.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "YyIETHYmQYYc",
+        "outputId": "c5b2e210-84ad-4e3c-c6fb-4980c7f486d5"
+      },
+      "execution_count": 11,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter recharge date (YYYY-MM-DD): 2025-10-01\n",
+            "Enter today's date (YYYY-MM-DD): 2026-09-29\n",
+            "Plan expired. Recharge again.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 5. Bus Seat Reservation System\n",
+        "booked = [\"Amit\", \"Sara\", \"John\"]\n",
+        "\n",
+        "cancel = input(\"Enter passenger name to cancel: \")\n",
+        "new_passenger = input(\"Enter new passenger name: \")\n",
+        "position = int(input(\"Enter position: \"))\n",
+        "\n",
+        "booked.remove(cancel)\n",
+        "booked.insert(position, new_passenger)\n",
+        "\n",
+        "print(\"Updated booking list:\", booked)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Rys4d9ZKQswf",
+        "outputId": "e0265885-cc4c-4e14-c54a-5dfb27db088c"
+      },
+      "execution_count": 20,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter passenger name to cancel: Amit\n",
+            "Enter new passenger name: John\n",
+            "Enter position: 7\n",
+            "Updated booking list: ['Sara', 'John', 'John']\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 6. Sum of Even Numbers\n",
+        "number = int(input(\"Enter a number: \"))\n",
+        "\n",
+        "total = 0\n",
+        "\n",
+        "for i in range(1, number + 1):\n",
+        "    if i % 2 == 0:\n",
+        "        total = total + i\n",
+        "\n",
+        "print(\"Sum of even numbers:\", total)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "efV2rtkSRUJq",
+        "outputId": "9709bfa9-d01f-4a1f-ac31-96864b76fbc3"
+      },
+      "execution_count": 14,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a number: 10\n",
+            "Sum of even numbers: 30\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 7. Dictionary – Student Marks Summary\n",
+        "students = {}\n",
+        "\n",
+        "for i in range(3):\n",
+        "    name = input(\"Enter name: \")\n",
+        "    marks = float(input(\"Enter marks: \"))\n",
+        "\n",
+        "    students[name] = marks\n",
+        "\n",
+        "average = sum(students.values()) / len(students)\n",
+        "\n",
+        "print(\"Student Marks:\", students)\n",
+        "print(\"Average Marks:\", average)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Oel18R4NRdb6",
+        "outputId": "96e468ee-5bea-430b-ce4e-126dc79a25e1"
+      },
+      "execution_count": 15,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter name: Vishnu\n",
+            "Enter marks: 80\n",
+            "Enter name: Praji\n",
+            "Enter marks: 90\n",
+            "Enter name: Ranjith\n",
+            "Enter marks: 30\n",
+            "Student Marks: {'Vishnu': 80.0, 'Praji': 90.0, 'Ranjith': 30.0}\n",
+            "Average Marks: 66.66666666666667\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# Dictionary - Word Frequency\n",
+        "sentence = input(\"Enter a sentence: \")\n",
+        "\n",
+        "words = sentence.split()\n",
+        "\n",
+        "frequency = {}\n",
+        "\n",
+        "for word in words:\n",
+        "    if word in frequency:\n",
+        "        frequency[word] = frequency[word] + 1\n",
+        "    else:\n",
+        "        frequency[word] = 1\n",
+        "\n",
+        "for word, count in frequency.items():\n",
+        "    print(word, \":\", count)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "Hb8PsumqRrnc",
+        "outputId": "55def39c-5de2-4a30-a53f-3a6b2f8e9b88"
+      },
+      "execution_count": 16,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a sentence: hello world hello python\n",
+            "hello : 2\n",
+            "world : 1\n",
+            "python : 1\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 9. Function – Check Prime\n",
+        "def check_prime(number):\n",
+        "\n",
+        "    if number <= 1:\n",
+        "        return False\n",
+        "\n",
+        "    for i in range(2, number):\n",
+        "        if number % i == 0:\n",
+        "            return False\n",
+        "\n",
+        "    return True\n",
+        "\n",
+        "\n",
+        "number = int(input(\"Enter a number: \"))\n",
+        "\n",
+        "if check_prime(number):\n",
+        "    print(number, \"is a prime number.\")\n",
+        "else:\n",
+        "    print(number, \"is not a prime number.\")"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "NTZEvQ9DSAPi",
+        "outputId": "401408b4-78be-45eb-fd8a-db2cb35108f5"
+      },
+      "execution_count": 17,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a number: 17\n",
+            "17 is a prime number.\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 10. Vowel Counter\n",
+        "def count_vowels(text):\n",
+        "\n",
+        "    count = 0\n",
+        "\n",
+        "    for character in text:\n",
+        "        if character.lower() in \"aeiou\":\n",
+        "            count = count + 1\n",
+        "\n",
+        "    return count\n",
+        "\n",
+        "\n",
+        "text = input(\"Enter a string: \")\n",
+        "\n",
+        "result = count_vowels(text)\n",
+        "\n",
+        "print(\"Number of vowels:\", result)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "njpVDZIMSK-S",
+        "outputId": "288182e0-246c-4bfd-d2bd-539c9bc5742c"
+      },
+      "execution_count": 18,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter a string: Python Programming\n",
+            "Number of vowels: 4\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "# 11. Count Divisible Numbers\n",
+        "N = int(input(\"Enter the range limit (N): \"))\n",
+        "D = int(input(\"Enter the divisor (D): \"))\n",
+        "\n",
+        "count = 0\n",
+        "\n",
+        "for i in range(1, N + 1):\n",
+        "    if i % D == 0:\n",
+        "        count = count + 1\n",
+        "\n",
+        "print(\"Count of numbers divisible by\", D, \":\", count)"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "mbShMhwXSV_X",
+        "outputId": "f74c5b05-779b-46d2-ab55-a56f4a890b81"
+      },
+      "execution_count": 19,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Enter the range limit (N): 50\n",
+            "Enter the divisor (D): 5\n",
+            "Count of numbers divisible by 5 : 10\n"
+          ]
+        }
+      ]
+    }
+  ]
+}
